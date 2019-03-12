@@ -8,11 +8,17 @@
         <mat-icon class="icon">input</mat-icon>
         <span class="label">Login</span>
       </a>
-      <a mat-list-item>
+      <a 
+        mat-list-item 
+        routerLink="/"
+      >
         <mat-icon class="icon">home</mat-icon>
         <span class="label">Home</span>
       </a>
-      <a mat-list-item>
+      <a 
+        mat-list-item
+        routerLink="/dashboard"  
+      >
         <mat-icon class="icon">dashboard</mat-icon>
         <span class="label">Dashboard</span>
       </a>
@@ -50,13 +56,13 @@
             </a>
           </li>
           <li>
-            <a>
+            <a routerLink="/">
               <mat-icon class="icon">home</mat-icon>
               <span class="label">Home</span>
             </a>
           </li>
           <li>
-            <a>
+            <a routerLink="/dashboard">
               <mat-icon class="icon">dashboard</mat-icon>
               <span class="label">Dashboard</span>
             </a>
