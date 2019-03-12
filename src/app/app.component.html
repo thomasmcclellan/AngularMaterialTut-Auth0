@@ -4,13 +4,18 @@
     role="navigation"
   >
     <mat-nav-list>
-      <a mat-list-item>
+      <a 
+        mat-list-item
+        *ngIf="!auth.isAuthenticated()"
+        (click)="auth.login()"
+      >
         <mat-icon class="icon">input</mat-icon>
         <span class="label">Login</span>
       </a>
       <a 
         mat-list-item 
         routerLink="/"
+        *ngIf="auth.isAuthenticated()"
       >
         <mat-icon class="icon">home</mat-icon>
         <span class="label">Home</span>
@@ -22,7 +27,12 @@
         <mat-icon class="icon">dashboard</mat-icon>
         <span class="label">Dashboard</span>
       </a>
-      <a mat-list-item type="button">
+      <a 
+        mat-list-item 
+        type="button"
+        *ngIf="auth.isAuthenticated()"
+        (click)="auth.logout()"
+      >
         <mat-icon class="icon">input</mat-icon>
         <span class="label">LogOut</span>
       </a>
@@ -50,13 +60,19 @@
           class="navigation-items"
         >
           <li>
-            <a>
+            <a
+              *ngIf="!auth.isAuthenticated()"
+              (click)="auth.login()"
+            >
               <mat-icon class="icon">input</mat-icon>
               <span class="label">Login</span>
             </a>
           </li>
           <li>
-            <a routerLink="/">
+            <a 
+              routerLink="/"
+              *ngIf="auth.isAuthenticated()"
+            >
               <mat-icon class="icon">home</mat-icon>
               <span class="label">Home</span>
             </a>
@@ -68,7 +84,11 @@
             </a>
           </li>
           <li>
-            <a>
+            <a
+              *ngIf="auth.isAuthenticated()"
+              (click)="auth.logout()"
+              type="button"
+            >
               <mat-icon class="icon">input</mat-icon>
               <span class="label">LogOut</span>
             </a>
@@ -76,6 +96,8 @@
         </ul>
       </div>
     </mat-toolbar>
-    <main></main>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

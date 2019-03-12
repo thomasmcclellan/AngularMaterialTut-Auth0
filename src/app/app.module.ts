@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataService } from './data/data.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { DataService } from './data/data.service';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [DataService],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
