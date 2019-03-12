@@ -9,15 +9,32 @@
         fxLayout.gt-md="row"
         fxLayoutAlign="space-around center"
       >
-        <div class="blocks">
+        <div 
+          class="blocks"
+          *ngIf="auth.isAuthenticated()"  
+        >
           <button
             mat-raised-button
             color="primary"
             button="submit"
+            (click)="openDialog()"
           >
             <mat-icon>add</mat-icon> Add Post
           </button>
         </div>
+
+        <div class="blocks">
+          <a 
+            button
+            mat-raised-button
+            color="primary"
+            (click)="auth.login()"
+            *ngIf="!auth.isAuthenticated()"
+          >
+            <mat-icon>input</mat-icon> Log in to Add Post
+          </a>
+        </div>
+
       </div>
     </div>
     <br>
@@ -55,7 +72,10 @@
                 <ng-container matColumnDef="delete">
                   <mat-header-cell *matHeaderCellDef></mat-header-cell>
                   <mat-cell *matCellDef="let element">
-                    <a type="button">
+                    <a 
+                      (click)="deletePost(element.position)"
+                      type="button"
+                    >
                       <mat-icon class="icon">delete</mat-icon>
                     </a>
                   </mat-cell>
